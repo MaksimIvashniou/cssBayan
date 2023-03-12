@@ -1,0 +1,81 @@
+:root {
+  --base-spacing: 0.5rem;
+  --color-black: #000000;
+  --color-gray: #3a3a3a;
+  --color-blue: #0000ff;
+  --color-blue-light: #0000ff8c;
+
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+.accordion__container {
+  width: 100%;
+  margin: auto;
+  color: var(--color-blue);
+}
+
+.accordion__container:hover,
+.meme:has(input[type='radio']:checked) {
+  color: var(--color-black);
+}
+
+.accordion__item {
+  padding: var(--base-spacing);
+  border-top: calc(var(--base-spacing) / 10);
+  border-style: solid;
+  border-color: var(--color-gray);
+}
+
+.meme {
+  overflow: hidden;
+}
+
+.meme__header {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.meme__title {
+  flex-grow: 1;
+}
+
+.meme__content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+
+.meme__image {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+.meme:hover .meme__content,
+.meme input[type='radio']:checked ~ .meme__content {
+  max-height: 1000vh;
+  margin-top: calc(var(--base-spacing) / 2);
+  opacity: 100;
+}
+
+.icon-wrapper {
+  transition: all 200ms ease-in-out;
+}
+
+.meme:hover .icon-wrapper,
+.meme input[type='radio']:checked ~ .meme__header .icon-wrapper {
+  transform: rotate(45deg);
+}
+
+.meme:active:not(.meme:has(input[type='radio']:checked)) {
+  color: var(--color-blue-light);
+  opacity: 0.8;
+}
